@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { getUsers } from "../api/users";
+import { getTodos } from "../api/todos";
+import { Link } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
 
-  // usequery로 데이터 불러오기
+  // react-query를 통해 users 데이터 가져오기
   const { isError, isLoading, data } = useQuery("users", getUsers);
 
   // id와 pw 상태관리 --------------------------
@@ -33,11 +35,12 @@ function Login() {
     // db에 id가 있는지 확인하고 있으면 비밀번호도 확인
     const validationId = data.filter((user) => user.userId === userId);
     const validationPw = data.filter((user) => user.userPw === userPw);
+
     if (validationId.length !== 1 || validationPw.length !== 1) {
       return alert("아이디와 비밀번호가 틀립니다.");
     }
     alert("로그인이 완료되었습니다.");
-    navigate("/main");
+    navigate(`/main/${userId}`);
   };
   return (
     <>
