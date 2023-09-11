@@ -7,17 +7,13 @@ function Main() {
   // todos에 저장되어 있는 데이터 가져오기
   const params = useParams();
   const { isError, isLoading, data } = useQuery("users", getTodos);
-  const foundData = data.find((todo) => {
-    return todo.userId === params.id;
-  });
-  console.log(foundData);
+
   return (
     <div>
-      {data
-        .filter((todo) => todo.userId === params.id)
-        .map((todo, idx) => (
-          <div key={idx}>{todo.todo}</div>
-        ))}
+      {data &&
+        data
+          .filter((todo) => todo.userId === params.id)
+          .map((todo, idx) => <div key={idx}>{todo.todo}</div>)}
     </div>
   );
 }

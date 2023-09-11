@@ -42,6 +42,7 @@ function Login() {
     alert("로그인이 완료되었습니다.");
     navigate(`/main/${userId}`);
   };
+
   return (
     <>
       <h1>로그인 하기</h1>
