@@ -15,10 +15,18 @@ function Join() {
       <div>
         <button
           onClick={() => {
+            alert("회원가입 성공");
             navigate("/");
           }}
         >
           회원가입
+        </button>
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          로그인
         </button>
       </div>
     </>
