@@ -40,7 +40,7 @@ function Login() {
       return alert("아이디와 비밀번호가 틀립니다.");
     }
     alert("로그인이 완료되었습니다.");
-    navigate(`/main/${userId}`);
+    navigate(`/main/${userId}/home`);
   };
 
   return (
