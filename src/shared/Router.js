@@ -7,6 +7,7 @@ import TodoList from "../pages/main/TodoList";
 import Home from "../pages/main/Home";
 import RecordTodo from "../pages/main/RecordTodo";
 import Detail from "../pages/main/Detail";
+import ModifyDetail from "../pages/main/ModifyDetail";
 
 function Router() {
   return (
@@ -18,7 +19,9 @@ function Router() {
           <Route path="home" element={<Home />}></Route>
           <Route path="todolist" element={<TodoList />}></Route>
           <Route path="recordTodo" element={<RecordTodo />}></Route>
-          <Route path="detail/:id" element={<Detail />}></Route>
+          <Route path="detail/:id" element={<Detail />}>
+            <Route path="modifydetail" element={<ModifyDetail />}></Route>
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

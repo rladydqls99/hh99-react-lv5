@@ -4,7 +4,7 @@ import axios from "axios";
 const getTodos = async () => {
   try {
     const response = await axios.get(
-      `${process.env.REACT_APP_SERVER_URL}/Todos`
+      `${process.env.REACT_APP_SERVER_URL}/todos`
     );
     return response.data;
   } catch (error) {
@@ -12,14 +12,22 @@ const getTodos = async () => {
   }
 };
 
-// user 추가하기
+// todo 추가하기
 const addTodos = async (newTodos) => {
   try {
     await axios.post(`${process.env.REACT_APP_SERVER_URL}/todos`, newTodos);
   } catch (error) {
     console.error("오류가 발생했습니다.", error);
-    console.log(newTodos);
   }
 };
 
-export { getTodos, addTodos };
+// todo 삭제
+const deleteTodos = async (id) => {
+  try {
+    await axios.delete(`${process.env.REACT_APP_SERVER_URL}/todos/${id}`, id);
+  } catch (error) {
+    console.error("오류가 발생했습니다.", error);
+  }
+};
+
+export { getTodos, addTodos, deleteTodos };
